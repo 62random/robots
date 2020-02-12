@@ -1,0 +1,9 @@
+.data
+sample/
+sampleex/
+samplesentry/
+sampleteam/
+robot.database
+META-INF/
+*.jar
+*.class
