@@ -1,3 +1,3 @@
 # robots
 
-## Small Robocode + IDEA IntelliJ setup, algong with some course assignments
+## Small Robocode + IDEA IntelliJ setup, along with some course assignments
