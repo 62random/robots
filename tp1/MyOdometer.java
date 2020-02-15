@@ -1,4 +1,4 @@
-package random;
+package tp1;
 
 import robocode.AdvancedRobot;
 import robocode.Condition;

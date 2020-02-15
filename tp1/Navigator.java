@@ -1,4 +1,4 @@
-package random;
+package tp1;
 import robocode.*;
 import java.awt.*;
 import standardOdometer.Odometer;
