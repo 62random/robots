@@ -23,37 +23,20 @@ public class State {
             enemies.put(((Enemy) o).getName(), (Enemy) o);
     }
 
-    public double[] NormalizedArray(){
-        double[] array = new double[NUM_ELEMENTS_TEAM*(ENEMY_INPUT_VARS + ALLIE_INPUT_VARS)];
+    public String encode(){
         int i = 0, j;
-        double[] arr;
+        String string = "";
 
-        Allie aux = allies.get(ownerName);          // Para garantir que os primeiros números do array
-                                                    // correspondem sempre aos dados do dono deste objeto
-        for (j = 0; j < ALLIE_INPUT_VARS; j++) {
-            arr = aux.NormalizedArray();
-            array[i + j] = arr[j];
-        }
-        i += j;
+        string += allies.get(ownerName).encode();       // Para garantir que os primeiros números do array
+                                                        // correspondem sempre aos dados do dono deste objeto
+        for (Allie a : allies.values())
+            if(!a.getName().equals(ownerName))
+                string += a.encode();
 
-        for (Allie a : allies.values()) {
-            if(!a.getName().equals(ownerName)) {
-                for (j = 0; j < ALLIE_INPUT_VARS; j++) {
-                    arr = a.NormalizedArray();
-                    array[i + j] = arr[j];
-                }
-                i += j;
-            }
-        }
+        for (Enemy e : enemies.values())
+            string += e.encode();
 
-        for (Enemy e : enemies.values()) {
-            for(j = 0; j < ENEMY_INPUT_VARS; j++) {
-                arr = e.NormalizedArray();
-                array[i + j] = arr[j];
-            }
-            i += j;
-        }
-        return array;
+        return string;
     }
 
     @Override

@@ -30,18 +30,18 @@ public class Allie implements Serializable {
         this.velocity = velocity;
     }
 
-    public double[] NormalizedArray() {
-        double[] array = new double[ALLIE_INPUT_VARS];
-        array[0] = x/MAP_WIDTH;
-        array[1] = y/MAP_HEIGHT;
-        array[2] = heading/360;
-        array[3] = radar_heading/360;
-        array[4] = gun_heading/360;
-        array[5] = energy/MAX_ENERGY;
-        array[6] = gun_heat/3;
-        array[7] = velocity/ Rules.MAX_VELOCITY;
+    public String encode() {
+        String string = "";
+        string += (x*MAP_MODEL_PARTITION/MAP_WIDTH);
+        string += (y*MAP_MODEL_PARTITION/MAP_HEIGHT);
+        string += (heading*DEGREES_PARTITIONS/360);
+        string += (radar_heading*DEGREES_PARTITIONS/360);
+        string += (gun_heading*DEGREES_PARTITIONS/360);
+        string += (energy*ENERGY_PARTITIONS/MAX_ENERGY);
+        string += (gun_heat > 0 ? 1 : 0);
+        string += (velocity*VELOCITY_PARTITIONS/Rules.MAX_VELOCITY);
 
-        return array;
+        return string;
     }
 
     public String getName() {
