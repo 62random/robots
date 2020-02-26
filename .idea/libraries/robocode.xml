@@ -12,7 +12,6 @@
       <root url="jar://$PROJECT_DIR$/../libs/robocode.ui-1.9.3.7.jar!/" />
       <root url="jar://$PROJECT_DIR$/../libs/robocode.ui.editor-1.9.3.7.jar!/" />
       <root url="jar://$PROJECT_DIR$/../libs/roborumble.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../libs/StandardOdometer.jar!/" />
       <root url="jar://$PROJECT_DIR$/../libs/robocode.jar!/" />
     </CLASSES>
     <JAVADOC>

@@ -1,12 +1,12 @@
 package tp1;
 import robocode.*;
 import java.awt.*;
-import standardOdometer.Odometer;
+//import standardOdometer.Odometer;
 
 
 public class Navigator extends AdvancedRobot {
 
-    private Odometer odometer = new Odometer("IsRacing", this);
+    //private Odometer odometer = new Odometer("IsRacing", this);
     private MyOdometer odometer2 = new MyOdometer("MyOdometer", this);
 
     private Obstacle[] obstacles = new Obstacle[3];
@@ -15,7 +15,7 @@ public class Navigator extends AdvancedRobot {
 
     public void run() {
         setColors(Color.red, Color.red, Color.red); // body,gun,radar
-        addCustomEvent(odometer);
+        //addCustomEvent(odometer);
         addCustomEvent(odometer2);
 
         setAdjustRadarForRobotTurn(true);
@@ -53,7 +53,7 @@ public class Navigator extends AdvancedRobot {
             goTo(18, 18);
         }
 
-        System.out.println(odometer.getRaceDistance() + " distance from standard odometer");
+        //System.out.println(odometer.getRaceDistance() + " distance from standard odometer");
         System.out.println(odometer2.getRaceDistance() + " distance from my odometer");
 
 
@@ -65,8 +65,8 @@ public class Navigator extends AdvancedRobot {
 
     public void onCustomEvent(CustomEvent ev) {
         Condition cd = ev.getCondition();
-        if (cd.getName().equals("IsRacing"))
-            this.odometer.getRaceDistance();
+        if (cd.getName().equals("IsRacing"));
+            //this.odometer.getRaceDistance();
     }
 
     private void goTo(int x, int y) {

@@ -3,8 +3,6 @@ import robocode.*;
 
 import java.io.Serializable;
 
-import static tp2.Constants.*;
-
 public class Enemy implements Serializable {
 
     private String name;
@@ -21,17 +19,6 @@ public class Enemy implements Serializable {
         this.heading = heading;
         this.energy = energy;
         this.velocity = velocity;
-    }
-
-    public String encode() {
-        String string = "";
-        string += (x*MAP_MODEL_PARTITION/MAP_WIDTH);
-        string += (y*MAP_MODEL_PARTITION/MAP_HEIGHT);
-        string += (heading*DEGREES_PARTITIONS/360);
-        string += (energy*ENERGY_PARTITIONS/MAX_ENERGY);
-        string += (velocity*VELOCITY_PARTITIONS/Rules.MAX_VELOCITY);
-
-        return string;
     }
 
     public String getName() {
@@ -56,6 +43,14 @@ public class Enemy implements Serializable {
 
     public double getVelocity() {
         return velocity;
+    }
+
+    public double getFutureX(long when){
+        return x +Math.sin(Math.toRadians(getHeading())) * getVelocity() * when;
+    }
+
+    public double getFutureY(long when){
+        return y + Math.cos(Math.toRadians(getHeading())) * getVelocity() * when;
     }
 
     @Override

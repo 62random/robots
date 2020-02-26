@@ -1,12 +1,13 @@
 package tp2;
+import robocode.RobotDeathEvent;
+
 import java.util.HashMap;
 
-import static tp2.Constants.*;
 
 public class State {
     private String ownerName;
-    private HashMap<String, Allie> allies;
-    private HashMap<String, Enemy> enemies;
+    public HashMap<String, Allie> allies;
+    public HashMap<String, Enemy> enemies;
 
 
     public State(Allie a) {
@@ -23,21 +24,6 @@ public class State {
             enemies.put(((Enemy) o).getName(), (Enemy) o);
     }
 
-    public String encode(){
-        int i = 0, j;
-        String string = "";
-
-        string += allies.get(ownerName).encode();       // Para garantir que os primeiros números do array
-                                                        // correspondem sempre aos dados do dono deste objeto
-        for (Allie a : allies.values())
-            if(!a.getName().equals(ownerName))
-                string += a.encode();
-
-        for (Enemy e : enemies.values())
-            string += e.encode();
-
-        return string;
-    }
 
     @Override
     public String toString() {
@@ -63,5 +49,13 @@ public class State {
                 ", \n\tallies=[" + str_allies +
                 "], \n\tenemies=[ " + str_enemies +
                 "]}";
+    }
+
+    public void removeRobot(String name) {
+
+        if(allies.containsKey(name))
+            allies.remove(name);
+        else if(enemies.containsKey(name))
+            enemies.remove(name);
     }
 }
