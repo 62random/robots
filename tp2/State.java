@@ -1,21 +1,23 @@
 package tp2;
 import robocode.RobotDeathEvent;
 
-import java.util.HashMap;
+import java.util.*;
 
 
 public class State {
     private String ownerName;
     public HashMap<String, Allie> allies;
     public HashMap<String, Enemy> enemies;
+    public int goal;
 
-
-    public State(Allie a) {
+    public State(AntiSocial r) {
+        Allie a = r.generateAllie();
         this.allies = new HashMap<>();
         ownerName = a.getName();
         allies.put(a.getName(), a);
         this.enemies = new HashMap<>();
     }
+
 
     public void updateRobot(Object o){
         if(o instanceof  Allie)
@@ -57,5 +59,10 @@ public class State {
             allies.remove(name);
         else if(enemies.containsKey(name))
             enemies.remove(name);
+    }
+
+
+    public static double dist(double x1, double y1, double x2, double y2){
+        return Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
     }
 }

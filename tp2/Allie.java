@@ -16,8 +16,10 @@ public class Allie implements Serializable {
     private double energy;
     private double gun_heat;
     private double velocity;
+    private String lockedRadar;
+    private String attacking;
 
-    public Allie(String name, double x, double y, double heading, double radar_heading, double gun_heading, double energy, double gun_heat, double velocity) {
+    public Allie(String name, double x, double y, double heading, double radar_heading, double gun_heading, double energy, double gun_heat, double velocity, String lockedRadar, String attacking) {
         this.name = name;
         this.x = x;
         this.y = y;
@@ -27,6 +29,8 @@ public class Allie implements Serializable {
         this.energy = energy;
         this.gun_heat = gun_heat;
         this.velocity = velocity;
+        this.lockedRadar = lockedRadar;
+        this.attacking = attacking;
     }
 
     public String getName() {
@@ -65,6 +69,14 @@ public class Allie implements Serializable {
         return velocity;
     }
 
+    public String getLockedRadar() {
+        return lockedRadar;
+    }
+
+    public String getAttacking() {
+        return attacking;
+    }
+
     public double getFutureX(long when){
         return x +Math.sin(Math.toRadians(getHeading())) * getVelocity() * when;
     }
@@ -86,6 +98,8 @@ public class Allie implements Serializable {
                 ", energy=" + energy +
                 ", gun_heat=" + gun_heat +
                 ", velocity=" + velocity +
+                ", lockedRadar= " + (lockedRadar != null ? lockedRadar : "") +
+                ", arracking= " + (attacking != null ? attacking : "") +
                 '}';
     }
 }
