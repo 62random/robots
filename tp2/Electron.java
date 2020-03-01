@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class AntiSocial extends TeamRobot {
+public class Electron extends TeamRobot {
     private static double WALL_STICK = 140;
     private java.awt.geom.Rectangle2D.Double _fieldRect;
     private double _bfWidth;

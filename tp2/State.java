@@ -1,5 +1,4 @@
 package tp2;
-import robocode.RobotDeathEvent;
 
 import java.util.*;
 
@@ -10,7 +9,7 @@ public class State {
     public HashMap<String, Enemy> enemies;
     public int goal;
 
-    public State(AntiSocial r) {
+    public State(Electron r) {
         Allie a = r.generateAllie();
         this.allies = new HashMap<>();
         ownerName = a.getName();
