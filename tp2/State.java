@@ -7,7 +7,6 @@ public class State {
     private String ownerName;
     public HashMap<String, Allie> allies;
     public HashMap<String, Enemy> enemies;
-    public int goal;
 
     public State(Electron r) {
         Allie a = r.generateAllie();

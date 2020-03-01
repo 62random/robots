@@ -71,7 +71,7 @@ public class Electron extends TeamRobot {
             boolean b = true;
             for(Allie a: state.allies.values())
                 if(!a.getName().equals(getName()))
-                    if(Math.abs(normalizeBearing(getGunHeadingRadians() - absoluteBearing(getX(), getY(), a.getX(), a.getY()))) < 60 && State.dist(getX(), getY(), a.getX(), a.getY()) > 500)
+                    if(Math.abs(normalizeBearing(absoluteBearing(getX(), getY(), e.getX(), e.getY()) - absoluteBearing(getX(), getY(), a.getX(), a.getY()))) < 60 || State.dist(getX(), getY(), a.getX(), a.getY()) > 500)
                         b = false;
 
             if(b)
@@ -133,14 +133,6 @@ public class Electron extends TeamRobot {
     }
 
 
-    @Override
-    public void onHitByBullet(HitByBulletEvent event) {
-    }
-
-    @Override
-    public void onHitWall(HitWallEvent event) {
-        //back(100);
-    }
 
     @Override
     public void onDeath(DeathEvent event) {
@@ -284,7 +276,6 @@ public class Electron extends TeamRobot {
                 yForce -= Math.cos(absBearing) / (distance * distance);
         }
 
-        long t = getTime();
 
 
         double angle = Math.atan2(xForce, yForce);
@@ -382,7 +373,7 @@ public class Electron extends TeamRobot {
         execute();
     }
 
-    public void manageRepeatedLocks() throws IOException {
+    public void manageRepeatedLocks()  {
         for (Allie a : state.allies.values()){
             if(!a.getName().equals(getName())) {
                 if (a.getLockedRadar() != null && a.getLockedRadar().equals(lockedRadarEnemy)) {
@@ -390,16 +381,6 @@ public class Electron extends TeamRobot {
                 }
             }
         }
-    }
-
-    private void goTo(int x, int y) {
-        double a;
-        setTurnRightRadians(Math.tan(
-                a = Math.atan2(x -= (int) getX(), y -= (int) getY())
-                        - getHeadingRadians()));
-        execute();
-        setAhead(Math.hypot(x, y) * Math.cos(a));
-        execute();
     }
 
 
